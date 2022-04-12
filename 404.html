@@ -8,7 +8,7 @@
        * Configuration goes here
        */
       // Format: https://api.github.com/repos/{owner}/{repo}/issues/
-      var GITHUB_ISSUES_LINK =
+      var GITHUB_SHORTLINKS_FILE =
         "https://api.github.com/repos/goaaats/s/issues/";
       var PATH_SEGMENTS_TO_SKIP = 1;
 
@@ -40,24 +40,23 @@
         xhr.onload = function () {
           try {
             var payload = JSON.parse(xhr.response);
-            var message = payload.message;
-            var title = payload.title;
+            var shortUrl = payload[issueNumber];
+            console.log("redirecting to " + shortUrl + " for " + issueNumber);
 
             // Workaround IE 11 lack of support for new URL()
             var url = document.createElement("a");
-            url.setAttribute("href", title);
+            url.setAttribute("href", shortUrl);
 
             // Invalid URLs includes invalid issue numbers, issue titles that are not URLs, and recursive destination URLs
             var isInvalidUrl =
-              message === "Not Found" ||
-              !title ||
-              !isUrl(title) ||
+              !shortUrl ||
+              !isUrl(shortUrl) ||
               url.hostname === location.hostname;
 
             if (isInvalidUrl) {
               location.replace(homepage);
             } else {
-              location.replace(title);
+              location.replace(shortUrl);
             }
           } catch (e) {
             location.replace(homepage);
@@ -67,7 +66,7 @@
         xhr.onerror = function () {
           location.replace(homepage);
         };
-        xhr.open("GET", GITHUB_ISSUES_LINK + issueNumber);
+        xhr.open("GET", GITHUB_SHORTLINKS_FILE);
         xhr.send();
       }
 
