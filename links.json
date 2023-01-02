@@ -1,5 +1,6 @@
 {
   "xlissue": "https://github.com/goatcorp/FFXIVQuickLauncher/issues/new?assignees=octocat&labels=bug%2Ctriage&template=bugreport.yml",
   "prules": "https://goatcorp.github.io/faq/development#q-what-am-i-allowed-to-do-in-my-plugin",
-  "av": "https://goatcorp.github.io/faq/xl_troubleshooting#q-how-do-i-whitelist-xivlauncher-and-dalamud-so-my-antivirus-leaves-them-alone"
+  "av": "https://goatcorp.github.io/faq/xl_troubleshooting#q-how-do-i-whitelist-xivlauncher-and-dalamud-so-my-antivirus-leaves-them-alone",
+  "steam": "https://goatcorp.github.io/faq/xl_troubleshooting#q-whats-the-deal-with-steam-support"
 }
